@@ -1,4 +1,6 @@
 # grunt-verbosity
+[![Build Status](https://travis-ci.org/ericclemmons/grunt-verbosity.png?branch=master)](https://travis-ci.org/ericclemmons/grunt-verbosity)
+
 
 > Adjust verbosity for individual grunt tasks
 
