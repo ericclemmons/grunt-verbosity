@@ -65,6 +65,7 @@ A string value to determine how to modify `grunt.log.writeln` output.
 - `hidden` (Default): See the task get executed, but not its output
 - `oneline`: See the output overwrite the same line to conserve space
 - `normal`: See the output without modification.  Useful for debugging.
+- `dot`: See each line of output is reduced to a dot to show progress.
 
 
 ## Contributing
