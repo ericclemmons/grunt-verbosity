@@ -71,7 +71,12 @@ A string value to determine how to modify `grunt.log.writeln` output.
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
+
 ## Release History
+
+### v0.1.1
+
+- Add `dot` mode - [#1](https://github.com/ericclemmons/grunt-verbosity/pull/1) (Thanks @getfatday!)
 
 ### v0.1.0
 

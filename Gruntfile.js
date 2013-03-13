@@ -49,6 +49,10 @@ module.exports = function(grunt) {
       normal: {
         options: { mode: 'normal' },
         tasks: ['copy:fixtures']
+      },
+      dot: {
+        options: { mode: 'dot' },
+        tasks: ['copy:fixtures']
       }
     },
 
@@ -70,7 +74,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'verbosity:hidden', 'copy', 'verbosity:oneline', 'copy', 'verbosity:normal', 'copy', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'verbosity:hidden', 'copy', 'verbosity:oneline', 'copy', 'verbosity:normal', 'copy', 'verbosity:dot', 'copy', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

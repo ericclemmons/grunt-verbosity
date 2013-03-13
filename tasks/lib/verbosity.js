@@ -81,7 +81,7 @@ Verbosity.modes = {
   'HIDDEN':   function(message) { return null; },
   'NORMAL':   function(message) { return message + "\n"; },
   'ONELINE':  function(message) { return message + "\r"; },
-  'DOT':     function(message) { return '.'; }
+  'DOT':      function(message) { return '.'; }
 };
 
 Verbosity.PATTERN = /Running\s\"(.+)\"\s\((.+)\)\stask/;
