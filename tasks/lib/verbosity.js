@@ -80,7 +80,8 @@ function Verbosity(logger, mode, targets) {
 Verbosity.modes = {
   'HIDDEN':   function(message) { return null; },
   'NORMAL':   function(message) { return message + "\n"; },
-  'ONELINE':  function(message) { return message + "\r"; }
+  'ONELINE':  function(message) { return message + "\r"; },
+  'DOT':     function(message) { return '.'; }
 };
 
 Verbosity.PATTERN = /Running\s\"(.+)\"\s\((.+)\)\stask/;
@@ -92,4 +93,3 @@ Verbosity.hasMode = function(mode) {
 Verbosity.match = function(message) {
   return message && message.match(Verbosity.PATTERN);
 };
-
