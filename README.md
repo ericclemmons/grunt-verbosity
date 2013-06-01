@@ -74,6 +74,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### v0.1.2
+
+- Fix BC break with Grunt 0.4.1 - [#3](https://github.com/ericclemmons/grunt-verbosity/pull/3) (Thanks @gruber76!)
+
 ### v0.1.1
 
 - Add `dot` mode - [#1](https://github.com/ericclemmons/grunt-verbosity/pull/1) (Thanks @getfatday!)
