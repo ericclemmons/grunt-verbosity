@@ -78,7 +78,7 @@ function Verbosity(logger, mode, targets) {
 };
 
 Verbosity.modes = {
-  'HIDDEN':   function(message) { return null; },
+  'HIDDEN':   function(message) { return ''; },
   'NORMAL':   function(message) { return message + "\n"; },
   'ONELINE':  function(message) { return message + "\r"; },
   'DOT':      function(message) { return '.'; }

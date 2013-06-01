@@ -31,6 +31,15 @@ module.exports = function(grunt) {
         verbosity.after(message);
       }
     });
+    
+    hooker.hook(grunt.log, 'header', {
+      pre: function(message) {
+        verbosity.before(message);
+      },
+      post: function(result, message) {
+        verbosity.after(message);
+      }
+    });
   });
 
 };
