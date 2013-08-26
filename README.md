@@ -74,6 +74,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### v0.2.0
+
+- Rewrote to not use `grunt.util.hooker`
+
 ### v0.1.2
 
 - Fix BC break with Grunt 0.4.1 - [#3](https://github.com/ericclemmons/grunt-verbosity/pull/3) (Thanks @gruber76!)
