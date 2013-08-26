@@ -74,6 +74,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### v0.2.2
+
+- Fix bug with `verbosity.writeln` and `undefined`
+
 ### v0.2.1
 
 - Fix bug with `Verbosity.match` not returning an array
