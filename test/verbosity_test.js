@@ -28,7 +28,9 @@ exports.Verbosity = {
 exports.verbosity = {
   setUp: function(callback) {
     this.logger = {
-      write: function() {}
+      header:   function() {},
+      write:    function() {},
+      writeln:  function() {}
     };
     callback();
   },
@@ -42,52 +44,11 @@ exports.verbosity = {
     test.done();
   },
   modeIsCapitalized: function(test) {
-    var v = new Verbosity(null, 'normal');
+    var v = new Verbosity(this.logger, 'normal');
 
     test.expect(1);
 
     test.equal('NORMAL', v.mode);
-
-    test.done();
-  },
-  afterUnexpectedTask: function(test) {
-    var v = new Verbosity(null, null, ['expected']);
-
-    test.expect(2);
-
-    test.equal(v.enabled, false);
-    v.after('Running "actual:task" (actual) task');
-    test.equal(v.enabled, false);
-
-    test.done();
-  },
-  afterExpectedTask: function(test) {
-    var v = new Verbosity(this.logger, null, ['expected']);
-
-    test.expect(2);
-
-    test.equal(v.enabled, false);
-    v.after('Running "expected:task" (expected) task');
-    test.equal(v.enabled, true);
-
-    test.done();
-  },
-  afterTasks: function(test) {
-    var v = new Verbosity(this.logger, null, ['expected']);
-
-    test.expect(6);
-
-    test.equal(v.enabled, false);
-    v.before('Running "actual:task" (actual) task');
-    test.equal(v.enabled, false);
-    v.after('Running "actual:task" (actual) task');
-    test.equal(v.enabled, false);
-
-    test.equal(v.enabled, false);
-    v.before('Running "expected:task" (expected) task');
-    test.equal(v.enabled, false);
-    v.after('Running "expected:task" (expected) task');
-    test.equal(v.enabled, true);
 
     test.done();
   }
