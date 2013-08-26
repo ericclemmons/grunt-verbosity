@@ -9,72 +9,64 @@
 
 module.exports = Verbosity;
 
-function Verbosity(logger, mode, targets) {
-  this.logger   = logger;
+function Verbosity(logger, mode, tasks) {
   this.mode     = (mode || 'normal').toUpperCase();
-  this.targets  = targets;
+  this.tasks    = tasks;
   this.enabled  = false;
 
+  var header    = logger.header;
+  var writeln   = logger.writeln;
+
+  this.init = function() {
+    logger.header = this.header.bind(this);
+  };
+
   this.disable = function() {
+    logger.writeln = writeln;
+
     this.enabled = logger.muted = false;
   };
 
   this.enable = function() {
     this.enabled = logger.muted = true;
+
+    logger.writeln = this.writeln.bind(this);
   };
 
-  this.before = function(message) {
-    if (!message) {
-      return false;
+  this.header = function(message) {
+    var matches   = Verbosity.match(message);
+    var matching  = tasks.filter(function(task) {
+      return matches.indexOf(task) !== -1;
+    });
+
+    if (matching.length) {
+      header.call(logger, message);
+      this.enable();
+    } else {
+      this.disable();
+      header.call(logger, message);
     }
 
-    if (Verbosity.match(message)) {
-      var was = this.enabled;
+    return logger;
+  };
+
+  this.writeln = function(message) {
+    if (message.length) {
+      var wrap = Verbosity.modes[this.mode];
 
       this.disable();
-
-      // Finish last modified line
-      if (was) {
-        logger.write("\n");
-      }
-    } else if (this.enabled && message) {
-      this.disable();
-      logger.write(this.wrap(message));
+      logger.write(wrap(message));
       this.enable();
     }
-  };
 
-  this.after = function(message) {
-    if (!message) {
-      return false;
-    }
-
-    var tasks = Verbosity.match(message);
-
-    if (tasks) {
-      var raw       = tasks[0];
-      var specific  = tasks[1];
-      var generic   = tasks[2];
-      var targets   = this.targets.filter(function(target) {
-        return tasks.indexOf(target) !== -1;
-      });
-
-      // Start modifying verbosity for expected targets
-      if (targets.length) {
-        this.enable();
-      }
-    }
-  };
-
-  this.wrap = function(message) {
-    var wrapper = Verbosity.modes[this.mode];
-
-    return wrapper(message);
+    return logger;
   };
 
   if (!Verbosity.hasMode(this.mode)) {
     throw new Error('Verbosity mode not defined: ' + this.mode);
   }
+
+  this.init();
 };
 
 Verbosity.modes = {
