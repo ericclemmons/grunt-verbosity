@@ -74,6 +74,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### v0.2.1
+
+- Fix bug with `Verbosity.match` not returning an array
+
 ### v0.2.0
 
 - Rewrote to not use `grunt.util.hooker`
