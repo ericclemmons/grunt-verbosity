@@ -51,7 +51,7 @@ function Verbosity(logger, mode, tasks) {
   };
 
   this.writeln = function(message) {
-    if (message.length) {
+    if (message && message.length) {
       var wrap = Verbosity.modes[this.mode];
 
       this.disable();
