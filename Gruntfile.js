@@ -24,47 +24,40 @@ module.exports = function(grunt) {
       },
     },
 
-    // Before generating any new files, remove any previously-created files.
-    clean: {
-      tests: ['tmp'],
-    },
-
-    copy: {
-      fixtures: {
-        files: [
-          { expand: true, cwd: 'test/fixtures/', src: '**', dest: 'tmp/' }
-        ]
-      }
+    log: {
+      clear: { options: { total:  1 } },
+      test: { options: {total: 5 } }
     },
 
     // Configuration to be run (and then tested).
     verbosity: {
       hidden: {
-        tasks: ['copy']
+        tasks: ['log:test']
       },
       oneline: {
         options: { mode: 'oneline' },
-        tasks: ['copy:fixtures']
+        tasks: ['log:test']
       },
       normal: {
         options: { mode: 'normal' },
-        tasks: ['copy:fixtures']
+        tasks: ['log:test']
       },
       dot: {
         options: { mode: 'dot' },
-        tasks: ['copy:fixtures']
+        tasks: ['log:test']
       }
     },
 
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js'],
-    },
+    }
 
   });
 
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');
+  grunt.loadTasks('test');
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -72,9 +65,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'verbosity:hidden', 'copy', 'verbosity:oneline', 'copy', 'verbosity:normal', 'copy', 'verbosity:dot', 'copy', 'nodeunit']);
+  grunt.registerTask('test', [
+    'verbosity:hidden',   'log:test', 'log:clear',
+    'verbosity:oneline',  'log:test', 'log:clear',
+    'verbosity:normal',   'log:test', 'log:clear',
+    'verbosity:dot',      'log:test', 'log:clear',
+    'nodeunit'
+  ]);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
