@@ -83,5 +83,7 @@ Verbosity.hasMode = function(mode) {
 };
 
 Verbosity.match = function(message) {
-  return message && message.match(Verbosity.PATTERN);
+  var matches = message && message.match(Verbosity.PATTERN);
+
+  return matches || [];
 };
