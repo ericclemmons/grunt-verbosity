@@ -14,10 +14,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     jshint: {
-      all: [
+      verbosity: [
         'Gruntfile.js',
         'tasks/*.js',
-        '<%= nodeunit.tests %>',
+        '<%= nodeunit.tests %>'
+      ],
+      fixtures: [
+        'test/fixtures/**/*.js'
       ],
       options: {
         jshintrc: '.jshintrc',
@@ -74,6 +77,6 @@ module.exports = function(grunt) {
   ]);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['jshint:verbosity', 'test']);
 
 };
