@@ -1,7 +1,7 @@
 /*
  * verbosity
  *
- * Copyright (c) 2013 Eric Clemmons
+ * Copyright (c) 2016 Eric Clemmons
  * Licensed under the MIT license.
  */
 
