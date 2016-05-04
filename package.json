@@ -28,10 +28,10 @@
     "test": "./node_modules/.bin/grunt"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "^1.0.0",
+    "grunt": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-nodeunit": "^1.0.0",
-    "grunt": "^1.0.0"
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0"
   },
   "peerDependencies": {
     "grunt": ">=0.4.5"
