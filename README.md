@@ -77,6 +77,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### v1.0.1
+
+- Update devDependencies and make travis tests pass.
+
 ### v1.0.0
 
 - Update peerDependencies for grunt v1. No Api changes.

@@ -1,7 +1,7 @@
 {
   "name": "grunt-verbosity",
   "description": "Adjust verbosity for individual grunt tasks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/ericclemmons/grunt-verbosity",
   "author": {
     "name": "Eric Clemmons",
